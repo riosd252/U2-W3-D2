@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   btnSave.onclick = () => {
     const inputValue = input.value;
     localStorage.setItem("Name", inputValue);
+    input.value = "";
   };
 
   btnRemove.onclick = () => {
@@ -15,10 +16,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   preLoadText(input);
 
-  const counter = () => {
-    sessionStorage.setItem("ET", JSON.parse(sessionStorage.getItem("ET")) + 1);
-  };
-
   setInterval(counter, 1000);
 });
 
@@ -27,4 +24,8 @@ const preLoadText = (input) => {
   if (storedText && input) {
     input.value = storedText;
   }
+};
+
+const counter = () => {
+  sessionStorage.setItem("ET", JSON.parse(sessionStorage.getItem("ET")) + 1);
 };
