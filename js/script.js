@@ -14,6 +14,12 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   preLoadText(input);
+
+  const counter = () => {
+    sessionStorage.setItem("ET", JSON.parse(sessionStorage.getItem("ET")) + 1);
+  };
+
+  setInterval(counter, 1000);
 });
 
 const preLoadText = (input) => {
@@ -22,24 +28,3 @@ const preLoadText = (input) => {
     input.value = storedText;
   }
 };
-
-let counter = null;
-
-const counterProgress = () => {
-  counter += 1;
-  sessionStorage.setItem("ET", counter);
-  localStorage.setItem("ET", counter);
-};
-
-const myCounter = setInterval(counterProgress, 1000);
-
-const counterKeep = () => {
-  if (localStorage.getItem("ET")) {
-    counter = JSON.parse(localStorage.getItem("ET"));
-    myCounter;
-  } else {
-    myCounter;
-  }
-};
-
-window.onload = counterKeep;
